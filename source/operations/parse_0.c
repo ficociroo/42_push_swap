@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:58:09 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 14:47:46 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:12:43 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	parse_arg(int argc, char *argv[], t_stacks *stacks)
 		d_value = ft_atod(argv[i + 1]);
 		if (d_value > INT_MAX || d_value < INT_MIN)
 			return (FALSE);
-		stacks->a[i] = (int)d_value;
-		if (check_repeated(stacks->a[i], i, stacks->a) == FALSE)
+		stacks->val[0][i] = (int)d_value;
+		if (check_repeated(stacks->val[0][i], i, stacks->val[0]) == FALSE)
 			return (FALSE);
 		i++;
 	}

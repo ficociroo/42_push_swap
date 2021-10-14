@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:25:04 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 15:10:37 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/12 22:52:12 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** ~*~*~*~*~*~*~*~ HEADERS ~*~*~*~*~*~*~*~
 */
 
+# include <limits.h>
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -37,17 +38,14 @@
 # define TRUE			1
 # define FALSE			0
 
-# define SA				0
-# define SB				1
-# define SS				2
-# define PA				3
-# define PB				4
-# define RA				5
-# define RB				6
-# define RR				7
-# define RRA			8
-# define RRB			9
-# define RRR			10
+# define STC_A			0
+# define STC_B			1
+# define STC_R			2
+
+# define S				10
+# define P				20
+# define R				30
+# define RR				40
 
 /*
 ** ~*~*~*~*~*~*~*~ FUNCTION PROTOTYPES ~*~*~*~*~*~*~*~
@@ -62,17 +60,36 @@
 /*
 ** ~*~*~*~ OPERATIONS ~*~*~*~
 */
+/*
+** DEL_0.c <<<<<<<<<<<<<<<<<<
+*/
+void		print_stacks(t_stacks *stacks);
 
 /*
-** check_sorted_0.c
+** check_sort_0.c
 */
-int			check_sorted(int *stack_a, int a_qty);
+int			check_sort_val(t_stacks *stc);
+int			check_sort_idx(t_stacks *stc);
+
+/*
+** commands_0.c
+*/
+void		rot(t_stacks *stacks, int stc);
+void		rev_rot(t_stacks *stacks, int stc);
+void		push(t_stacks *stacks, int stc);
+
+/*
+** commands_1.c
+*/
+void		add_step(t_stacks *stacks, int cmd, int stc);
+void		swap(t_stacks *stacks, int stc);
 
 /*
 ** exit_0.c
 */
 void		error_exit(void);
 void		free_exit(int status, t_stacks *stacks);
+void		end_free_exit(int status, t_stacks *stacks);
 
 /*
 ** parse_0.c
@@ -83,6 +100,11 @@ int			parse_arg(int argc, char *argv[], t_stacks *stacks);
 ** print_steps_0.c
 */
 void		print_steps(t_steps *step_list);
+
+/*
+** sort_array_0.c
+*/
+void		sort_array(t_stacks *stacks);
 
 /*
 ** sort_stacks_0.c
