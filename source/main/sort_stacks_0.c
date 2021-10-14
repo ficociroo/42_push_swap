@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:58:09 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 01:29:44 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:39:51 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	sort_bit_array(t_stacks *stacks, int bit_id)
 		if (!bit_bool)
 		{
 			push(stacks, STC_B);
-			if (i > stacks->val[1][0] && i != cycles)
-				rot(stacks, STC_B);
+/* 			if (i > stacks->val[1][0] && i != cycles)
+				rot(stacks, STC_B); */
 		}
 		else
 			rot(stacks, STC_A);
@@ -57,14 +57,14 @@ static void	sort_bit_array(t_stacks *stacks, int bit_id)
 	}
 }
 
-static void	bring_sorted_b(t_stacks *stacks)
+/* static void	bring_sorted_b(t_stacks *stacks)
 {
 	while (stacks->qty[1] >= 0)
 	{
 		rev_rot(stacks, STC_B);
 		push(stacks, STC_A);
 	}
-}
+} */
 
 void	sort_stacks(t_stacks *stacks)
 {
@@ -80,5 +80,5 @@ void	sort_stacks(t_stacks *stacks)
 			push(stacks, STC_A);
 		i++;
 	}
-	bring_sorted_b(stacks);
+//	bring_sorted_b(stacks);
 }
