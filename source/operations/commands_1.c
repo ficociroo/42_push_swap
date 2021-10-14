@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:26:33 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 00:32:52 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:57:11 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,5 @@ void	swap(t_stacks *stacks, int stc)
 	tmp = stacks->idx[stc][0];
 	stacks->idx[stc][0] = stacks->idx[stc][1];
 	stacks->idx[stc][1] = tmp;
-	tmp = stacks->val[stc][0];
-	stacks->val[stc][0] = stacks->val[stc][1];
-	stacks->val[stc][1] = tmp;
 	add_step(stacks, S, stc);
 }
