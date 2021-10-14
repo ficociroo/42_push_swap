@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:25:04 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 00:27:43 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 03:35:17 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,16 @@
 /*
 ** push_swap_0.c
 */
+/*
+** sort_stacks_0.c
+*/
+int			sig_bit_counter(int value);
+void		sort_stacks(t_stacks *stacks);
+
+/*
+** sort_small_stack_0.c
+*/
+void		sort_small_stack(t_stacks *stc);
 
 /*
 ** ~*~*~*~ OPERATIONS ~*~*~*~
@@ -105,11 +115,5 @@ void		print_steps(t_steps *step_list);
 ** sort_array_0.c
 */
 void		sort_array(t_stacks *stacks);
-
-/*
-** sort_stacks_0.c
-*/
-int			sig_bit_counter(int value);
-void		sort_stacks(t_stacks *stacks);
 
 #endif

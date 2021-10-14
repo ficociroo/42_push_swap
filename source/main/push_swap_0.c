@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 09:29:15 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 01:59:07 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 03:38:43 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,44 +37,6 @@ static t_stacks	*c_stacks_values(int intc)
 	return (address);
 }
 
-static void	sort_small_stack(t_stacks *stc)
-{
-	if (stc->idx[0][0] == 0)
-	{
-		swap(stc, STC_A);
-		rot(stc, STC_A);
-	}
-	else if (stc->idx[0][0] == 1)
-	{
-		if (stc->idx[0][1] == 0)
-			swap(stc, STC_A);
-		else
-			rev_rot(stc, STC_A);
-	}
-	else
-	{
-		if (stc->idx[0][1] == 0)
-			rot(stc, STC_A);
-		else
-		{
-			swap(stc, STC_A);
-			rev_rot(stc, STC_A);
-		}
-	}
-}
-
-void	sig_bit_array(t_stacks *stc)
-{
-	int		i;
-
-	i = 0;
-	while (i <= stc->qty[0])
-	{
-		stc->val[0][i] = sig_bit_counter(stc->idx[0][i]);
-		i++;
-	}
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stacks	*stacks;
@@ -89,8 +51,7 @@ int	main(int argc, char *argv[])
 	if (check_sort_val(stacks) == FALSE)
 	{
 		sort_array(stacks);
-		sig_bit_array(stacks);
-		if (stacks->qty[0] == 2)
+		if (stacks->qty[0] >= 2 && stacks->qty[0] <= 4)
 			sort_small_stack(stacks);
 		else
 			sort_stacks(stacks);
