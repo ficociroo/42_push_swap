@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 09:29:15 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 22:14:01 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 00:08:21 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,32 @@ static t_stacks	*c_stacks_values(int intc)
 	return (address);
 }
 
+static void	sort_small_stack(t_stacks *stc)
+{
+	if (stc->idx[0][0] == 0)
+	{
+		swap(stc, STC_A);
+		rot(stc, STC_A);
+	}
+	else if (stc->idx[0][0] == 1)
+	{
+		if (stc->idx[0][1] == 0)
+			swap(stc, STC_A);
+		else
+			rev_rot(stc, STC_A);
+	}
+	else
+	{
+		if ((stc->idx[0][1] == 0))
+			rot(stc, STC_A);
+		else
+		{
+			swap(stc, STC_A);
+			rev_rot(stc, STC_A);
+		}
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stacks	*stacks;
@@ -51,7 +77,10 @@ int	main(int argc, char *argv[])
 	if (check_sort_val(stacks) == FALSE)
 	{
 		sort_array(stacks);
-		sort_stacks(stacks);
+		if (stacks->qty[0] == 2)
+			sort_small_stack(stacks);
+		else
+			sort_stacks(stacks);
 	}
 	if (stacks->step_list != NULL)
 		print_steps(stacks->step_list);
