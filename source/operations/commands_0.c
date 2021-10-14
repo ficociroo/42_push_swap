@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands_0 copy.c                                  :+:      :+:    :+:   */
+/*   commands_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:26:33 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 21:35:07 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:30:24 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,27 @@ void	rot(t_stacks *stacks, int stc)
 {
 	int			tmp;
 
+	if (stacks->qty[stc] == 0)
+		return ;
 	tmp = stacks->idx[stc][0];
 	advance_stc(stacks->idx[stc], stacks->qty[stc]);
 	stacks->idx[stc][stacks->qty[stc]] = tmp;
+	tmp = stacks->val[stc][0];
+	advance_stc(stacks->val[stc], stacks->qty[stc]);
+	stacks->val[stc][stacks->qty[stc]] = tmp;
 	add_step(stacks, R, stc);
 }
 
 void	rev_rot(t_stacks *stacks, int stc)
 {
+	if (stacks->qty[stc] == 0)
+		return ;
 	revolve_stc(stacks->idx[stc], stacks->qty[stc]);
 	stacks->idx[stc][0] = stacks->idx[stc][stacks->qty[stc] + 1];
 	stacks->idx[stc][stacks->qty[stc] + 1] = 0;
+	revolve_stc(stacks->val[stc], stacks->qty[stc]);
+	stacks->val[stc][0] = stacks->val[stc][stacks->qty[stc] + 1];
+	stacks->val[stc][stacks->qty[stc] + 1] = 0;
 	add_step(stacks, RR, stc);
 }
 
@@ -68,6 +78,10 @@ void	push(t_stacks *stacks, int stc)
 	advance_stc(stacks->idx[other_stc], stacks->qty[other_stc]);
 	revolve_stc(stacks->idx[stc], stacks->qty[stc]);
 	stacks->idx[stc][0] = tmp;
+	tmp = stacks->val[other_stc][0];
+	advance_stc(stacks->val[other_stc], stacks->qty[other_stc]);
+	revolve_stc(stacks->val[stc], stacks->qty[stc]);
+	stacks->val[stc][0] = tmp;
 	stacks->qty[stc]++;
 	stacks->qty[other_stc]--;
 	add_step(stacks, P, stc);

@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:25:04 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 22:52:12 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 00:27:43 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		sort_array(t_stacks *stacks);
 /*
 ** sort_stacks_0.c
 */
+int			sig_bit_counter(int value);
 void		sort_stacks(t_stacks *stacks);
 
 #endif

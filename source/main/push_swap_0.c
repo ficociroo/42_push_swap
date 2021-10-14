@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 09:29:15 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 00:08:21 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:32:06 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,25 @@ static void	sort_small_stack(t_stacks *stc)
 	}
 	else
 	{
-		if ((stc->idx[0][1] == 0))
+		if (stc->idx[0][1] == 0)
 			rot(stc, STC_A);
 		else
 		{
 			swap(stc, STC_A);
 			rev_rot(stc, STC_A);
 		}
+	}
+}
+
+void	sig_bit_array(t_stacks *stc)
+{
+	int		i;
+
+	i = 0;
+	while (i <= stc->qty[0])
+	{
+		stc->val[0][i] = sig_bit_counter(stc->idx[0][i]);
+		i++;
 	}
 }
 
@@ -77,6 +89,7 @@ int	main(int argc, char *argv[])
 	if (check_sort_val(stacks) == FALSE)
 	{
 		sort_array(stacks);
+		sig_bit_array(stacks);
 		if (stacks->qty[0] == 2)
 			sort_small_stack(stacks);
 		else
