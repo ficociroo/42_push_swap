@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands_0 copy.c                                  :+:      :+:    :+:   */
+/*   commands_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:26:33 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/12 21:35:07 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:47:47 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	rot(t_stacks *stacks, int stc)
 {
 	int			tmp;
 
+	if (stacks->qty[stc] <= 0)
+		return ;
 	tmp = stacks->idx[stc][0];
 	advance_stc(stacks->idx[stc], stacks->qty[stc]);
 	stacks->idx[stc][stacks->qty[stc]] = tmp;
@@ -50,6 +52,8 @@ void	rot(t_stacks *stacks, int stc)
 
 void	rev_rot(t_stacks *stacks, int stc)
 {
+	if (stacks->qty[stc] <= 0)
+		return ;
 	revolve_stc(stacks->idx[stc], stacks->qty[stc]);
 	stacks->idx[stc][0] = stacks->idx[stc][stacks->qty[stc] + 1];
 	stacks->idx[stc][stacks->qty[stc] + 1] = 0;

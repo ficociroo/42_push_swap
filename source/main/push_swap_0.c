@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 09:29:15 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/14 00:08:21 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:43:49 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	sort_small_stack(t_stacks *stc)
 	}
 	else
 	{
-		if ((stc->idx[0][1] == 0))
+		if (stc->idx[0][1] == 0)
 			rot(stc, STC_A);
 		else
 		{

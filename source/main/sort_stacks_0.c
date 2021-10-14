@@ -6,7 +6,7 @@
 /*   By: cfico-vi <cfico-vi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:58:09 by cfico-vi          #+#    #+#             */
-/*   Updated: 2021/10/13 23:23:20 by cfico-vi         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:52:13 by cfico-vi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,37 @@ int	sig_bit_counter(int value)
 	return (counter);
 }
 
-void	push_back(t_stacks *stacks)
+void	sort_bits(t_stacks *stacks, int bit_id)
 {
-	while (stacks->qty[1] >= 0)
-		push(stacks, STC_A);
+	int		i;
+	int		bit_bool;
+	int		cycles;
+
+	i = 0;
+	cycles = stacks->qty[0];
+	while (i <= cycles)
+	{
+		bit_bool = bit_boolean(stacks->idx[0][0], bit_id);
+		if (!bit_bool)
+			push(stacks, STC_B);
+		else
+			rot(stacks, STC_A);
+		i++;
+	}
 }
 
 void	sort_stacks(t_stacks *stacks)
 {
 	int		sig_bit;
 	int		i;
-	int		j;
-	int		bit_bool;
-	int		cycles;
 
 	i = 0;
 	sig_bit = sig_bit_counter(stacks->qty[0]);
 	while (i < sig_bit)
 	{
-		j = 0;
-		cycles = stacks->qty[0];
-		while (j <= cycles)
-		{
-			bit_bool = bit_boolean(stacks->idx[0][0], i);
-			if (!bit_bool)
-				push(stacks, STC_B);
-			else
-				rot(stacks, STC_A);
-			j++;
-		}
-		push_back(stacks);
+		sort_bits(stacks, i);
+		while (stacks->qty[1] >= 0)
+			push(stacks, STC_A);
 		i++;
 	}
 }
